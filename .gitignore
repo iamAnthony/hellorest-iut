@@ -10,3 +10,5 @@
 *.ipr
 *.iws
 /.idea
+/.nb-gradle/profiles/private/
+/.nb-gradle/private/

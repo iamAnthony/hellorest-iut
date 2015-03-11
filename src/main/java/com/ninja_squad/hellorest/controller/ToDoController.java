@@ -17,10 +17,13 @@ public class ToDoController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public ToDoTask add(@RequestBody ToDoTask task) {
-        // TODO implement business logic
-        return null;
+        tasks.add(task);
+        return task;
     }
-
-
-    // TODO Add a GET method listing existing tasks
+    
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public List<ToDoTask> list() {
+        return tasks;
+    }
 }
