@@ -13,6 +13,7 @@ public class ToDoController {
 
     // We use a simple in memory list (don't do it in real life!)
     private final List<ToDoTask> tasks = new ArrayList<>();
+    private String[] priorities = {"LOW", "HIGH", "DEFAULT", "BACKEND !", "Test"};
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
@@ -25,5 +26,10 @@ public class ToDoController {
     @ResponseStatus(HttpStatus.OK)
     public List<ToDoTask> list() {
         return tasks;
+    }
+    
+    @RequestMapping("/priorities")
+    public String[] prios() {
+        return priorities;
     }
 }

@@ -19,7 +19,7 @@ var App = angular.module('App', []);
 
     App.controller('ToDoCtrl', ['$scope', '$http', function ($scope, $http) {
 
-        $scope.priorities = ['DEFAULT', 'LOW', 'HIGH'];
+        $scope.priorities = undefined;
         $scope.tasks = [];
 
         $scope.initNewTask = function() {
@@ -42,7 +42,15 @@ var App = angular.module('App', []);
                     $scope.refreshTasks();
                 });
         };
-
+        
+        $scope.initPriorities = function() {
+            $http.get('tasks/priorities').then(function(response) {
+                $scope.priorities = response.data;
+                
+            });
+        };
+        
+        $scope.initPriorities();
         $scope.initNewTask();
 
         // Fetch existing tasks at loading
